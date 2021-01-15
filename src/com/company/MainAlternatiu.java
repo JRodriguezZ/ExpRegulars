@@ -21,30 +21,36 @@ public class MainAlternatiu {
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
+
+
+        boolean indexNoel = false;
+        boolean indexRens = false;
+        boolean indexFollets = false;
+
         int numLineas = 1;
 
         while (linea != null) {
             System.out.print("Linea " + numLineas + ": ");
 
-            matNoel = patNoel.matcher(linea);
-            matRens = patRens.matcher(linea);
-            matFollets = patFollets.matcher(linea);
+            indexNoel = linea.contains("*<]:-DOo");
+            indexRens = linea.contains(">:o)");
+            indexFollets = linea.contains("|<]:-D");
 
             int contadorNoel = 0;
             int contadorRens = 0;
             int contadorFollets = 0;
 
-            while (matNoel.find()) {
+            if (indexNoel) {
                 contadorNoel++;
             }
-            while (matRens.find()) {
+            if (indexRens) {
                 contadorRens++;
             }
-            while (matFollets.find()) {
+            if (indexFollets) {
                 contadorFollets++;
             }
 
-            if (contadorNoel != 0){ System.out.print("Pare noel (" + contadorNoel + ") "); }
+            if (contadorNoel != 0) { System.out.print("Pare noel (" + contadorNoel + ") "); }
             if (contadorRens != 0) { System.out.print("Rens (" + contadorRens + ") "); }
             if (contadorFollets != 0) { System.out.print("Follets (" + contadorFollets + ") "); }
             System.out.println();
@@ -56,6 +62,6 @@ public class MainAlternatiu {
             } catch (IOException ioException) {
                 ioException.printStackTrace();
             }
+        }
     }
-
 }
